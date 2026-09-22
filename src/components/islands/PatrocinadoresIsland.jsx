@@ -22,14 +22,6 @@ const patrocinadores = [
     alt: 'TecSalud',
   },
   {
-    imgUrl: '/img/patrocinadores/nipro_tecnicare_vm.webp',
-    alt: 'Nipro Tecnicare',
-  },
-  {
-    imgUrl: '/img/patrocinadores/salud_aurea_patrocinador.webp',
-    alt: 'Salud Aurea',
-  },
-  {
     imgUrl: '/img/patrocinadores/asp.webp',
     alt: 'ASP',
   },
@@ -41,14 +33,8 @@ const patrocinadores = [
     imgUrl: '/img/patrocinadores/sanieren.webp',
     alt: 'Sanieren',
   },
-  {
-    imgUrl: '/img/patrocinadores/vitalmex.webp',
-    alt: 'Vitalmex',
-  },
-  {
-    imgUrl: '/img/patrocinadores/inimed.webp',
-    alt: 'Inimed',
-  },
+
+
 ];
 
 export default function PatrocinadoresIsland() {

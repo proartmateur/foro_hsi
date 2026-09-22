@@ -1,56 +1,57 @@
 import React, { useEffect, useState } from 'react';
+import slider1 from '../../assets/slider1.webp';
+import slider2 from '../../assets/slider2.webp';
 
 const images = [
-  '/hero-logo-mobile-min.webp',
-  'https://res.cloudinary.com/difrqz0ke/image/upload/v1754336318/AuditorioMedicasur2_hero_un25vw.webp',
-  'https://res.cloudinary.com/difrqz0ke/image/upload/v1754337172/slider_003__ojk3gd.webp',
-  'https://res.cloudinary.com/difrqz0ke/image/upload/v1754337173/slider_001__umnxqc.webp',
-  'https://res.cloudinary.com/difrqz0ke/image/upload/v1754337172/slider_002__pvmx3q.webp'
+  slider1.src,
+  slider2.src,
+  slider1.src,
+  slider2.src,
 ];
-
-const SLIDER_HEIGHT = 220; // px, adjust as needed
 
 const HeroSlider: React.FC = () => {
   const [index, setIndex] = useState(0);
-  const [fade, setFade] = useState(true);
 
   useEffect(() => {
+    // Un solo intervalo limpio. No necesitamos estados intermedios.
     const interval = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % images.length);
-        setFade(true);
-      }, 400); // fade out duration
-    }, 3500);
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // Aumentamos un poco el tiempo de exposición para que luzca el diseño
+    
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-      className='flex'
       style={{
-        width: `100%`,
-        height: '320px',
+        width: '100%',
+        height: '811px',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       {images.map((src, i) => (
         <img
-          key={src}
+          key={`${src}-${i}`}
           src={src}
-          alt="Slider"
+          alt={`Slider ${i + 1}`}
           style={{
-            width: '100%',
+            width: '688px',
             height: '100%',
             objectFit: 'contain',
+            objectPosition: 'left center',
             position: 'absolute',
             top: 0,
             left: 0,
-            opacity: index === i && fade ? 1 : 0,
+            // LOGICA DE CROSS-FADE:
+            // Si es el índice actual, opacidad 1. Si no, 0.
+            opacity: index === i ? 1 : 0,
             pointerEvents: index === i ? 'auto' : 'none',
-            transition: 'opacity 0.4s ease',
+            // Transmisión suave de 1.2 segundos para un efecto premium
+            transition: 'opacity 1.2s ease-in-out',
+            zIndex: index === i ? 10 : 0,
           }}
+          // Estrategia de carga para evitar saltos de red
           loading={i === 0 ? 'eager' : 'lazy'}
           fetchPriority={i === 0 ? 'high' : 'auto'}
         />

@@ -1,202 +1,327 @@
 ---
 import { Image } from "astro:assets";
 import Button from "./Button.astro";
-import hsiBg from "../assets/hsi_bg.png";
-
-import heroLogo from "../assets/hero-logo.png";
 import heroLogoMobile from "../assets/hero-logo-mobile.png";
-import heroWoman from "../assets/hero-woman.png";
-import msLogo from "../assets/logos_avales.webp";
+import VIForoHsi from "../assets/VIForo2026.svg";
+import cnspLogo from "../assets/logo_cnsp.svg";
+import msLogoMedicaSur from "../assets/medica-sur.svg";
 import HeroSlider from "./react/HeroSlider.tsx";
 import DescargarAgendaButton from "./atoms/DescargarAgendaButton.astro";
-const sectionStyles = `landing-section md:min-h-screen bg-light-gray w-screen text-center overflow-hidden relative pb-24 md:pb-0`;
+
+const sectionStyles = `landing-section md:min-h-screen bg-light-white w-screen text-center overflow-hidden relative pb-24 md:pb-0`;
 ---
 
-<section class={sectionStyles} data-header-color={`light-gray`} id="inicio">
-  <Image
-    src={hsiBg}
-    alt="Fondo HSI"
-    class="absolute inset-0 w-full h-full object-cover z-0"
-    width={1920}
-    height={1080}
-    loading="lazy"
-    decoding="async"
-    format="webp"
-    quality={70}
-    aria-hidden="true"
-    style="pointer-events:none; user-select:none;"
-  />
+<section class={sectionStyles} data-header-color={`light-white`}>
+
+    <!-- Fondo del home -->
+  <div
+    class="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center pointer-events-none"
+    style="background-image: url('/hero-bg.png');"
+    aria-hidden="true"></div>
+
   <!-- Desktop Layout -->
   <div class="flex flex-col xl:mt-6">
-    <div
-      class="hidden lg:flex justify-between items-stretch grow px-[10%] pt-32 z-30 relative min-h-[500px]"
-    >
-      <!-- Left content -->
-      <div
-        class="flex flex-col w-[40vw] items-start max-w-[40vw] space-y-5 mb-5 h-full"
-      >
-        <h1 class="text-black text-5xl font-black uppercase">
-          <span class="text-6xl">F</span>oro 2026
-        </h1>
+    <div class="hidden lg:flex flex-row justify-between items-start grow px-0 pl-[5%] pr-[5%] pt-32 z-30 relative min-h-[500px]">
 
-        <h3
-          class="flex flex-col items-start justify-start leading-5 font-thin text-4xl text-black"
-        >
-          <span>El desafío de las</span><br />
-          <span>Infecciones</span><br />
-          <span>Intrahospitalarias</span>
-        </h3>
+     <!-- LEFT: Slider + Logo -->
+<div class="flex-1 h-full flex flex-col items-start gap-2">
+  <HeroSlider client:idle />
 
-        <div
-          class="bg-gradient-to-r from-gradient-start via-gradient-center to-gradient-end rounded-[20px] px-6 py-2 inline-block"
-        >
-          <p
-            class="text-white font-extrabold uppercase text-4xl lg:text-2xl leading-tight tracking-wide text-left"
-          >
-            HACIA UNA POLÍTICA PÚBLICA
-          </p>
-          <p
-            class="text-white font-extrabold uppercase text-4xl lg:text-2xl leading-tight tracking-wide text-left"
-          >
-            QUE IMPULSE LA PREVENCIÓN
-          </p>
-        </div>
+</div>
+<!-- fin de lado izquierdo -->
 
-        <!-- Texto y botón alineados -->
-        <div class="flex items-start gap-4">
-          <!-- Texto -->
-          <div class="space-y-1 flex flex-col items-start">
-            <p class="text-2xl tracking-wider font-bold text-black-text">
-              25 Y 26 DE SEPTIEMBRE, 2026
-            </p>
-            <div class="flex flex-col items-start justify-start w-full">
-              <p class="text-black text-xl font-normal tracking-widest">
-                Auditorio del <strong class="font-extrabold"
-                  >Hospital Médica Sur</strong
-                >
-              </p>
-              <div
-                class="h-1 w-full mt-1 rounded-full bg-gradient-to-r from-gradient-start via-gradient-center to-gradient-end"
-              >
-              </div>
-            </div>
-          </div>
-        </div>
+     <!-- Lado Derecho: Textos -->
+<div class="flex flex-col w-[50vw] items-left max-w-[50vw] space-y-4 mb-5 h-full px-8">
 
-        <!-- Sede -->
-        <div class="pt-1 flex justify-end">
-          <Button href="#registro" label="REGÍSTRATE" />
-          <DescargarAgendaButton className="ml-6" />
-        </div>
-      </div>
+  <!-- Lado Derecho: Textos -->
+<div class="flex flex-col w-full md:w-[50vw] items-start max-w-full md:max-w-[50vw] space-y-4 mb-5 h-full px-8">
 
-      <!-- Right image -->
-      <div
-        class="flex-1 h-full flex flex-col items-end gap-2"
-      >
-        <HeroSlider client:idle />
-        <div class="flex flex-col items-center mt-4 w-full">
-          <span
-            class="px-4 py-1 rounded-full text-white font-semibold text-base shadow bg-gradient-to-r from-[#3bb3c3] to-[#6ec06b] mb-2"
-            >CON AVAL ACADÉMICO</span
-          >
-          <Image
-            src={msLogo}
-            alt="Médica Sur"
-            class="h-20 w-auto"
-            width={200}
-            height={80}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={80}
-          />  
-        </div>
-      </div>
-    </div>
-    <div
-      class="w-full flex h-12 min-h-12 absolute bottom-0 bg-[url('/motivos_pattern.webp')] bg-repeat-x bg-contain bg-bottom"
-    >
-      &nbsp;
-    </div>
-  </div>
-
-  <!-- Mobile Layout -->
-  <div
-    class="lg:hidden flex flex-col items-center text-center px-6 pt-40 z-30 relative h-full"
-  >
-    <h1 class="text-black text-3xl font-black uppercase">
-      <span class="text-4xl">F</span>oro 2025
-    </h1>
+  <!-- Contenedor para Logo + Botón (Fila en Desktop) -->
+  <div class="flex flex-col md:flex-row md:items-center justify-start w-full gap-6 md:gap-20">
+    <!-- VI Foro 2026 -->
     <Image
-      src={heroLogoMobile}
-      alt="Doctores"
-      class="w-[200px]"
-      loading="eager"
-      fetchpriority="high"
-      width={320}
-      format="webp"
+      src={VIForoHsi}
+      alt="VI Foro"
+      class="h-auto w-40 md:w-46"
+      width={182}
+      height={164}
+      loading="lazy"
+      decoding="async"
+      format="svg"
       quality={80}
     />
 
-    <h3
-      class="flex flex-col w-full items-\ justify-start leading-3 font-thin text-2xl text-black mt-3 mb-6"
-    >
-      <span>El desafío de las</span><br />
-      <span>Infecciones</span><br />
-      <span>Intrahospitalarias</span>
-    </h3>
+    <!-- Botón de Registro -->
 
-    <div
-      class="bg-gradient-to-r from-gradient-start via-gradient-center to-gradient-end rounded-[20px] px-6 py-2 inline-block mb-3"
-    >
-      <p
-        class="text-white font-extrabold uppercase text-xl leading-tight tracking-wide text-left"
-      >
-        HACIA UNA POLÍTICA PÚBLICA
-      </p>
-      <p
-        class="text-white font-extrabold uppercase text-xl leading-tight tracking-wide text-left"
-      >
-        QUE IMPULSE LA PREVENCIÓN
-      </p>
-    </div>
+<a 
+  href="https://luma.com/event/evt-DdurH0Y2SBFgFcz" 
+  class="luma-checkout--button" 
+  data-luma-action="checkout"
+  data-luma-event-id="evt-DdurH0Y2SBFgFcz"
+  style="
+    background: #00B0E4; 
+    color: #fff; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 250px; 
+    height: 46px;
+    border-radius: 32px; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    font-weight: 400; 
+    font-size: 16px; 
+    letter-spacing: 0.05em; 
+    text-align: center; 
+    white-space: nowrap;
+    transition: transform 0.2s ease;
+  "
+   onmouseover="
+      this.style.background='#25A64B'; 
+      this.style.fontWeight='900'; 
+      this.style.transform='scale(1.03)';
+    "
+    onmouseout="
+      this.style.background='#00B0E4'; 
+      this.style.fontWeight='400'; 
+      this.style.transform='scale(1)';
+    "
+>
+  REGISTRO
+</a>
 
-    <p class="text-black text-3xl font-bold">
-      25 Y 26 DE <br />SEPTIEMBRE, 2025
-    </p>
-    <div class="flex flex-col items-start justify-start w-full">
-      <p
-        class="flex w-full flex-col text-black text-2xl text-center font-normal tracking-wide"
-      >
-        Auditorio del <br /><strong class="font-extrabold"
-          >Hospital Médica Sur</strong
-        >
-      </p>
-      <div
-        class="h-1 w-full mt-1 rounded-full bg-gradient-to-r from-gradient-start via-gradient-center to-gradient-end"
-      >
-      </div>
-    </div>
-
-    <span
-      class="px-4 py-1 rounded-full text-white font-semibold text-base shadow bg-gradient-to-r from-gradient-start via-gradient-center to-gradient-end mt-10 mb-2"
-      >CON AVAL ACADÉMICO</span
-    >
-    <Image
-            src={msLogo}
-            alt="Médica Sur"
-            class="h-20 w-auto"
-            width={200}
-            height={60}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={80}
-          />  
-    <div class="mt-6">
-      <Button href="#registro" label="REGÍSTRATE" />
-    </div>
-    
   </div>
+
+</div>
+
+<div class="bg-[#204356] rounded-full px-8 py-3 w-full max-w-[575px] h-12 flex items-center justify-center">
+    <p class="text-white font-bold italic leading-[114.9%] tracking-normal text-center whitespace-nowrap"
+     style="font-size: clamp(18px, 2.5vw, 36px);">
+    El desafío de las Infecciones</p>
+</div>
+
+  <!-- Subtítulo verde en cursiva -->
+  <h3 class="text-green-600 font-medium italic text-xl leading-snug text-justify">
+    <span>“UNA SOLA SALUD” ANTE LA</span><br/>
+    <span>RESISTENCIA ANTIMICROBIANA</span>
+  </h3>
+
+  <!-- FONDO DEGRADADO "EVENTO GRATUITO" -->
+  <div class="text-justify">
+  <span class="px-6 py-2 rounded-[5px] text-white font-bold tracking-widest shadow bg-gradient-hsi whitespace-nowrap"
+        style="font-size: clamp(12px, 1.2vw, 18px);">
+    EVENTO GRATUITO
+  </span>
+  </div>
+
+  <!-- Fecha del foro  -->
+  <p class="text-3xl font-black text-blue-text tracking-wide text-justify">
+    27 Y 28 DE AGOSTO, 2026
+  </p>
+
+  <!-- Sede + línea ondulada decorativa -->
+  <div class="flex flex-col items-justify w-full">
+    <p class="text-gray-700 text-lg font-thin tracking-widest text-justify text-blue-text">
+      SEDE | <strong class="font-extrabold">Auditorio Médica Sur</strong>
+    </p>
+    <br>
+   <img src="/wave-line.svg" alt="" class="w-[142px] md:w-[350px]" aria-hidden="true" />
+  </div>
+
+  <!-- MédicaSur logo + texto institucional -->
+  <div class="flex items-center gap-2 mt-[14px]">
+    <Image
+      src={msLogoMedicaSur}
+      alt="Médica Sur"
+      class="h-12 w-auto"
+      width={224.6}
+      height={52}
+      loading="lazy"
+      format="svg"
+      quality={80}
+    />
+    <!-- Separador vertical -->
+    <div class="w-px h-14 bg-gray-400"></div>
+    <!-- Texto institucional -->
+    <p class="font-bold text-blue-text italic text-base leading-snug text-justify max-w-[280px]">
+      Institución sede comprometida<br/>con el combate a las infecciones
+    </p>
+  </div>
+
+<!--Aval Acaemico, degradado + logo -->
+<div class="flex flex-row items-center gap-6 mt-6">
+  
+  <!-- Etiqueta Aval Académico -->
+   <span class="px-6 py-2 rounded-[5px] text-white font-bold tracking-widest shadow bg-gradient-hsi whitespace-nowrap"
+        style="font-size: clamp(12px, 1.2vw, 18px);">
+    AVAL ACADÉMICO
+  </span>
+
+  <!-- Logo CNSP -->
+  <Image
+    src={cnspLogo}
+    alt="CNSP"
+    class="h-32 w-auto" 
+    width={165}
+    height={165}
+    loading="lazy"
+    format="svg"
+    quality={90}
+  />
+  
+</div>
+<!-- Termina Lado derecho -->
+</div>
+<!-- Fin lg:flex -->
+</div>
+<!-- Fin desktop layout -->
+
+
+
+  <!-- Mobile Layout -->
+<div
+  class="absolute inset-0 z-0 bg-no-repeat bg-cover bg-center pointer-events-none"
+  style="background-image: url('/bg_home_mobile.png');"
+  aria-hidden="true">
+</div>
+
+<div class="lg:hidden flex flex-col items-center text-center px-6 pt-32 z-30 relative h-full">
+
+  <!-- VI Foro 2026 mobile -->
+  <Image
+    src={VIForoHsi}
+    alt="VI Foro"
+    class="w-[140px] h-auto"
+    width={182}
+    height={164}
+    loading="lazy"
+    decoding="async"
+    format="svg"
+    quality={90}
+  />
+
+  <!-- EVENTO GRATUITO -->
+  <div class="mt-3 mb-2">
+    <span class="px-6 py-2 rounded-[5px] text-white font-bold tracking-widest shadow bg-gradient-hsi text-sm">
+      EVENTO GRATUITO
+    </span>
+  </div>
+
+  <!-- Imagen doctores mobile -->
+<Image
+  src={heroLogoMobile}
+  alt="Doctores"
+  class="w-[290px] h-auto my-4 object-contain"
+  loading="eager"
+  fetchpriority="high"
+  width={290}
+  height={400}
+  format="png"
+  quality={90}
+/>
+
+  <!-- Badge ancho completo y texto escalable -->
+  <div class="bg-[#204356] rounded-full px-6 py-3 w-full flex items-center justify-center">
+    <p
+      class="text-white font-bold italic leading-snug tracking-normal text-center"
+      style="font-size: clamp(16px, 5.1vw, 36px);">
+      El desafío de las Infecciones
+    </p>
+  </div>
+
+  <!-- Subtítulo Mobile -->
+  <h3 class="text-green-600 mt-3 font-medium italic text-lg leading-snug text-center">
+    <span>"UNA SOLA SALUD" ANTE LA</span><br />
+    <span>RESISTENCIA ANTIMICROBIANA</span>
+  </h3>
+
+  <!-- Fecha mobile -->
+  <p class="text-blue-text mt-3 text-3xl font-bold">
+    27 Y 28 DE AGOSTO, 2026
+  </p>
+
+  <!-- SEDE Mobile-->
+  <div class="flex flex-col items-center w-full mt-2">
+    <p class="text-blue-text text-lg text-center font-thin tracking-wide">
+      SEDE | <strong class="font-extrabold">Auditorio Médica Sur</strong>
+    </p>
+  </div>
+
+  <!-- MédicaSur logo + texto — columna centrada -->
+  <div class="flex flex-col items-center mt-4 gap-2">
+    <Image
+      src={msLogoMedicaSur}
+      alt="Médica Sur"
+      class="h-14 w-auto"
+      width={200}
+      height={60}
+      loading="lazy"
+      format="svg"
+      quality={90}
+    />
+    <p class="font-bold italic text-blue-text  text-center text-base leading-snug">
+      Institución sede comprometida<br />con el combate a las infecciones
+    </p>
+  </div>
+
+  <!-- AVAL ACADÉMICO -->
+  <div class="mt-5">
+    <span class="px-6 py-2 rounded-[5px] text-white font-bold tracking-widest shadow bg-gradient-hsi text-sm">
+      AVAL ACADÉMICO
+    </span>
+  </div>
+
+  <!-- Logo CNSP -->
+  <Image
+    src={cnspLogo}
+    alt="CNSP"
+    class="h-32 w-auto mt-3 mb-8"
+    width={132}
+    height={132}
+    loading="lazy"
+    format="svg"
+    quality={90}
+  />
+
+   <!-- Botón de Registro -->
+    <div class="flex flex-col items-center mt-4 gap-2">
+    <a 
+    href="https://luma.com/event/evt-DdurH0Y2SBFgFcz" 
+    class="luma-checkout--button" 
+    data-luma-action="checkout" 
+    data-luma-event-id="evt-DdurH0Y2SBFgFcz"
+    style="
+      background: #00B0E4; 
+      color: #fff; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      width: 343px; 
+      height: 35px; 
+      border-radius: 32px; 
+      text-transform: uppercase; 
+      text-decoration: none; 
+      font-weight: 400; 
+      font-size: 16px; 
+      letter-spacing: 0.05em; 
+      text-align: center; 
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    "
+    onmouseover="
+      this.style.background='#25A64B'; 
+      this.style.fontWeight='900'; 
+      this.style.transform='scale(1.03)';
+    "
+    onmouseout="
+      this.style.background='#00B0E4'; 
+      this.style.fontWeight='400'; 
+      this.style.transform='scale(1)';
+    "
+  >
+      REGISTRO
+    </a>
+</div>
+</div>
+<!-- END Mobile Layout -->
 </section>
